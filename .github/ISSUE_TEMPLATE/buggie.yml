@@ -1,14 +1,14 @@
-name: Bug Report
-description: File a bug report
-title: "[Bug]: "
-labels: ["bug", "triage"]
+name: Blueprint service
+description: Request a new blueprint service
+title: "[BP]: "
+labels: ["request", "blueprint"]
 assignees:
-  - octocat
+  - wschoot
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        The request form below serves the purpose to make requesting a new service in the blueprint easier!
   - type: input
     id: contact
     attributes:
@@ -27,7 +27,7 @@ body:
     validations:
       required: true
   - type: dropdown
-    id: version
+    id: vcpus
     attributes:
       label: Version
       description: What version of our software are you running?
@@ -37,26 +37,31 @@ body:
     validations:
       required: true
   - type: dropdown
-    id: browsers
+    id: entities
     attributes:
-      label: What browsers are you seeing the problem on?
+      label: Which entities should the service be available
       multiple: true
       options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
+        - NL
+        - US
+        - Testrack
   - type: textarea
-    id: logs
+    id: additional-info
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      label: What additional info can we use
+      description: If you have any additional information that might we relevant, please describe here
+      render: shell
+  - type: textarea
+    id: additional-steps
+    attributes:
+      label: What additional steps should be performed
+      description: We use Ansible to run additional automated steps, if required.
       render: shell
   - type: checkboxes
-    id: terms
+    id: db-backups
     attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      label: Database backups
+      description: If you use a database in this service, please state if they should be backupped regularly using a dump command. This is in addition to nightly backups of the VM itself.
       options:
         - label: I agree to follow this project's Code of Conduct
           required: true
