@@ -32,6 +32,9 @@ body:
       placeholder: ex. dnsmaster
     validations:
       required: false
+  - type: markdown
+    attributes:
+      value: ## Resources        
   - type: dropdown
     id: vcpus
     attributes:
