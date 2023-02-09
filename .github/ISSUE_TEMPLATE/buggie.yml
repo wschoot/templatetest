@@ -40,9 +40,9 @@ body:
       label: vCPU's
       description: Number of virtual CPUs required?
       options:
-        - 1
-        - 2
-        - 4
+        - "1"
+        - "2"
+        - "4"
     validations:
       required: true
   - type: dropdown
@@ -51,24 +51,24 @@ body:
       label: RAM
       description: Number of gigabytes RAM required?
       options:
-        - 1
-        - 2
-        - 4
-        - 8
-        - 16
+        - "1"
+        - "2"
+        - "4"
+        - "8"
+        - "16"
     validations:
       required: true
- - type: dropdown
+  - type: dropdown
     id: disk
     attributes:
       label: Disk space
       description: Number of gigabytes Disk space required?
       options:
-        - 10
-        - 20
-        - 40
-        - 80
-        - 160
+        - "10"
+        - "20"
+        - "40"
+        - "80"
+        - "160"
     validations:
       required: true
   - type: checkboxes
@@ -101,13 +101,11 @@ body:
     attributes:
       label: What additional info can we use
       description: If you have any additional information that might we relevant, please describe here
-      render: shell
   - type: textarea
     id: additional-steps
     attributes:
       label: What additional steps should be performed
       description: We use Ansible to run additional automated steps, if required.
-      render: shell
   - type: checkboxes
     id: db-backups
     attributes:
