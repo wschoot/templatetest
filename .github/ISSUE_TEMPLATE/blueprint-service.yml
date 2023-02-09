@@ -1,6 +1,5 @@
 name: Blueprint service
 description: Request a new blueprint service
-title: "[BP]: "
 labels: ["request", "blueprint"]
 assignees:
   - wschoot
@@ -22,8 +21,7 @@ body:
     attributes:
       label: What does the service to?
       description: Tell us, what do you want to host
-      placeholder: Tell us more about the service we're about to host for you
-      value: "Really awesome app for syncing X to Y periodically!"
+      placeholder: "Really awesome app for syncing X to Y periodically!"
     validations:
       required: true
   - type: input
@@ -87,6 +85,26 @@ body:
       options:
         - label: External IPv4 IP address
           required: false
+  - type: textarea
+    id: extra-internal-ips
+    attributes:
+      label: Additional internal IPs
+      description: Tell us about any additional (internal) IPs you might need
+      placeholder: |
+        Something like:
+        vlan 1234, 1.2.3.4/24
+    validations:
+      required: false
+  - type: textarea
+    id: extra-custom-routes
+    attributes:
+      label: Additional custom routes
+      description: Tell us about any additional (custom) routes
+      placeholder: |
+        Something like:
+        10.20.30.40/24 should be routed over interface X or IP Y
+    validations:
+      required: false
   - type: dropdown
     id: entities
     attributes:
