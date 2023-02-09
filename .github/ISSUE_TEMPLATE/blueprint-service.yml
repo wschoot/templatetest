@@ -121,7 +121,17 @@ body:
         10.20.30.40/24 should be routed over interface X or IP Y
     validations:
       required: false
-
+  - type: textarea
+    id: firewall-rules
+    attributes:
+      label: Firewall rules
+      description: Tell us about any firewallrules we need to host this. Probably matches the ports-clause for containerized setups.
+      placeholder: |
+        Something like:
+        - port 80/tcp
+        - port 53/udp
+    validations:
+      required: false
   - type: checkboxes
     id: db-backups
     attributes:
