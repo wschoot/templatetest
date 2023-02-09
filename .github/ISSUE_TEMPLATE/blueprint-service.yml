@@ -24,6 +24,15 @@ body:
       placeholder: "Really awesome app for syncing X to Y periodically!"
     validations:
       required: true
+  - type: dropdown
+    id: entities
+    attributes:
+      label: Which entities should the service be available aka where-should-it-run
+      multiple: true
+      options:
+        - NL
+        - US
+        - Testrack
   - type: input
     id: hostname
     attributes:
@@ -34,7 +43,7 @@ body:
       required: false
   - type: markdown
     attributes:
-      value: "## Resources"
+      value: "# Resources"
   - type: dropdown
     id: vcpus
     attributes:
@@ -72,6 +81,7 @@ body:
         - "160"
     validations:
       required: true
+
   - type: markdown
     attributes:
       value: "# Network"
@@ -111,15 +121,44 @@ body:
         10.20.30.40/24 should be routed over interface X or IP Y
     validations:
       required: false
-  - type: dropdown
-    id: entities
+
+  - type: checkboxes
+    id: db-backups
     attributes:
-      label: Which entities should the service be available
-      multiple: true
+      label: Database backups
+      description: If you use a database in this service, please state if they should be backupped regularly using a dump command. This is in addition to nightly backups of the VM itself.
       options:
-        - NL
-        - US
-        - Testrack
+        - label: Database backups
+          required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Containerstack
+        
+        If you want to use containers (preferred), we'd like to know which one so we can define a compose.yml-file for you
+  - type: textarea
+    id: container-info
+    attributes:
+      label: Containerinfo
+      description: If you have any additional information that might we relevant, please describe here
+      placeholder: |
+        Something like:
+          - image: eg <imagename>:<tag>
+          - ports: eg 80, 443
+          - env-vars: eg what vars does the container need
+          - Can the image run read only?
+          - tmpfs / bind-mounts (or volumes)
+          - Health checks
+
+  - type: markdown
+    attributes:
+      value: "## Misc"
+  - type: textarea
+    id: additional-monitoring
+    attributes:
+      label: What monitoring should be in place
+      description: By default, we check the VM for various things. If there's application specific things you want to have checked, please detail them here
   - type: textarea
     id: additional-info
     attributes:
@@ -130,11 +169,4 @@ body:
     attributes:
       label: What additional steps should be performed
       description: We use Ansible to run additional automated steps, if required.
-  - type: checkboxes
-    id: db-backups
-    attributes:
-      label: Database backups
-      description: If you use a database in this service, please state if they should be backupped regularly using a dump command. This is in addition to nightly backups of the VM itself.
-      options:
-        - label: Database backups
-          required: false
+
