@@ -34,7 +34,7 @@ body:
       required: false
   - type: markdown
     attributes:
-      value: ## Resources        
+      value: "## Resources"
   - type: dropdown
     id: vcpus
     attributes:
