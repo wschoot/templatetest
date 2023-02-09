@@ -10,32 +10,83 @@ body:
       value: |
         The request form below serves the purpose to make requesting a new service in the blueprint easier!
   - type: input
-    id: contact
+    id: owner
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
+      label: "Code" owner
+      description: Who is the code owner of this service, if it's different from the requestor
+      placeholder: ex. Japje
     validations:
       required: false
   - type: textarea
-    id: what-happened
+    id: what-is-it
     attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      label: What does the service to?
+      description: Tell us, what do you want to host
+      placeholder: Tell us more about the service we're about to host for you
+      value: "Really awesome app for syncing X to Y periodically!"
     validations:
       required: true
+  - type: input
+    id: hostname
+    attributes:
+      label: Hostname
+      description: Whats the (short) hostname of this server
+      placeholder: ex. dnsmaster
+    validations:
+      required: false
   - type: dropdown
     id: vcpus
     attributes:
-      label: Version
-      description: What version of our software are you running?
+      label: vCPU's
+      description: Number of virtual CPUs required?
       options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
+        - 1
+        - 2
+        - 4
     validations:
       required: true
+  - type: dropdown
+    id: memory
+    attributes:
+      label: RAM
+      description: Number of gigabytes RAM required?
+      options:
+        - 1
+        - 2
+        - 4
+        - 8
+        - 16
+    validations:
+      required: true
+ - type: dropdown
+    id: disk
+    attributes:
+      label: Disk space
+      description: Number of gigabytes Disk space required?
+      options:
+        - 10
+        - 20
+        - 40
+        - 80
+        - 160
+    validations:
+      required: true
+  - type: checkboxes
+    id: network-external-v4
+    attributes:
+      label: External IPv4
+      description: Do you need an (external) IPv4 address?
+      options:
+        - label: External IPv4 IP address
+          required: false
+  - type: checkboxes
+    id: network-external-v6
+    attributes:
+      label: External IPv6
+      description: Do you need an (external) IPv6 address?
+      options:
+        - label: External IPv4 IP address
+          required: false
   - type: dropdown
     id: entities
     attributes:
@@ -63,5 +114,5 @@ body:
       label: Database backups
       description: If you use a database in this service, please state if they should be backupped regularly using a dump command. This is in addition to nightly backups of the VM itself.
       options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
+        - label: Database backups
+          required: false
